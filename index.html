@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>biskuit hub - index</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght,GRAD@8..144,25..151,100..1000,-200..150&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            /* Premium M3 Expressive Matrix Tokens, nyaa~! */
+            --md-bg: #0c0f14;
+            --md-surface: #161920;
+            --md-surface-variant: #1e232d;
+            --md-primary: #adc6ff;
+            --md-on-primary: #002e69;
+            --md-primary-container: #2b447a;
+            --md-on-surface: #e3e2e6;
+            --md-variant: #c4c6d0;
+            
+            /* Material Easing, owo */
+            --md-ease-expressive: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --md-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        body {
+            font-family: 'Roboto Flex', sans-serif;
+            background-color: var(--md-bg);
+            background-image: linear-gradient(rgba(12, 15, 20, 0.8), rgba(12, 15, 20, 0.9)), url('bliss.jpg'); /* Leveraging your background asset node flawlessly! */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--md-on-surface);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .hub-container {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            animation: m3-pop-entrance 0.9s var(--md-ease-standard) both;
+        }
+
+        @keyframes m3-pop-entrance {
+            from { opacity: 0; transform: scale(0.94) translateY(30px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* Expressive Glassmorphic Header Unit */
+        .brand-hero {
+            background: rgba(22, 25, 32, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 36px 12px 36px 36px;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s var(--md-ease-expressive);
+        }
+
+        .brand-hero:hover {
+            border-radius: 36px 36px 12px 36px;
+            transform: translateY(-4px);
+            background: rgba(30, 35, 45, 0.75);
+        }
+
+        .avatar-node {
+            width: 76px;
+            height: 76px;
+            border-radius: 28px 12px 28px 28px;
+            object-fit: cover;
+            border: 2px solid var(--md-primary);
+            transition: transform 0.6s var(--md-ease-expressive);
+        }
+
+        .brand-hero:hover .avatar-node {
+            transform: scale(1.1) rotate(6deg);
+            border-radius: 16px 28px 16px 16px;
+        }
+
+        .title-meta {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hub-main-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            font-stretch: 125%;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+        }
+
+        .hub-subtitle {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--md-primary);
+            letter-spacing: 0.5px;
+        }
+
+        /* Grid Categories Node Stack */
+        .section-box {
+            background: rgba(22, 25, 32, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 28px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-header {
+            font-size: 0.85rem;
+            font-weight: 900;
+            color: var(--md-primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding-left: 4px;
+        }
+
+        .btn-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Premium Win10 Settings Fluent Reveal Dynamic Base Button, owo! */
+        .reveal-glow-btn {
+            position: relative;
+            background: var(--md-surface);
+            border: 2px solid transparent; /* Activating border space calculations */
+            border-radius: 18px 6px 18px 18px; /* Classic structural M3 asymmetry! */
+            padding: 16px 24px;
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #ffffff;
+            cursor: pointer;
+            overflow: hidden;
+            transition: background 0.3s ease, border-radius 0.4s var(--md-ease-expressive), transform 0.3s var(--md-ease-expressive);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+        }
+
+        /* Real-time calculated hardware glow ring element layer, nyaa~! */
+        .reveal-glow-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: inherit;
+            padding: 2px; /* Precision boundary mask alignment */
+            background: radial-gradient(circle 130px at var(--mouse-x, 0) var(--mouse-y, 0), rgba(173, 198, 255, 0.35), transparent 80%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        /* Dynamic hovering reveal background burst tracking node, uwu */
+        .reveal-glow-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle 100px at var(--mouse-x, 0) var(--mouse-y, 0), rgba(173, 198, 255, 0.06), transparent 70%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        /* Activating glow presence states on mouse tracking triggers */
+        .reveal-glow-btn:hover::before, .reveal-glow-btn:hover::after {
+            opacity: 1;
+        }
+
+        .reveal-glow-btn:hover {
+            background: var(--md-surface-variant);
+            border-radius: 18px 18px 6px 18px;
+            transform: scale(1.02) translateX(4px);
+        }
+
+        .reveal-glow-btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-text {
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-stretch: 105%;
+            transition: font-weight 0.2s ease, font-stretch 0.2s ease;
+        }
+
+        /* Text expansion morphing physics when selected */
+        .reveal-glow-btn:hover .btn-text {
+            font-weight: 900;
+            font-stretch: 115%;
+            color: var(--md-primary);
+        }
+
+        .btn-arrow-indicator {
+            font-size: 1.1rem;
+            color: var(--md-primary);
+            opacity: 0.6;
+            transition: transform 0.3s var(--md-ease-expressive);
+        }
+
+        .reveal-glow-btn:hover .btn-arrow-indicator {
+            opacity: 1;
+            transform: translateX(4px) scale(1.2);
+        }
+
+        /* Coming Soon Decorative Inactive Layout Nodes, owo */
+        .vault-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px dashed rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--md-variant);
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            animation: vault-pulse 3s infinite ease-in-out;
+            user-select: none;
+        }
+
+        @keyframes vault-pulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(0.99); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hub-container">
+        
+        <header class="brand-hero">
+            <img src="avatar.png" alt="Cookie squircle logo" class="avatar-node">
+            <div class="title-meta">
+                <h1 class="hub-main-title">Cookie :3</h1>
+                <span class="hub-subtitle">Website Hub</span>
+            </div>
+        </header>
+
+        <section class="section-box">
+            <h2 class="category-header">Main Section</h2>
+            <div class="btn-stack">
+                <a href="https://linktr.ee/Smg5official55" target="_blank" class="reveal-glow-btn">
+                    <span class="btn-text">Linktree</span>
+                    <span class="btn-arrow-indicator">↗</span>
+                </a>
+                <a href="./personal.html" class="reveal-glow-btn">
+                    <span class="btn-text">Personal</span>
+                    <span class="btn-arrow-indicator">→</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="section-box">
+            <h2 class="category-header">Extra Section</h2>
+            <div class="btn-stack">
+                <div class="vault-item">🔒 Coming Soon</div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        const buttons = document.querySelectorAll('.reveal-glow-btn');
+
+        // Track standard mouse movements across PC desktops, owo!
+        buttons.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                btn.style.setProperty('--mouse-x', `${x}px`);
+                btn.style.setProperty('--mouse-y', `${y}px`);
+            });
+
+            // Tracking dragging/moving fingers on phone hardware touch screens smoothly, nyaa~!
+            btn.addEventListener('touchmove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const touch = e.touches[0];
+                const x = touch.clientX - rect.left;
+                const y = touch.clientY - rect.top;
+                
+                // Ensuring boundaries are correctly pinned inside the element bounding boxes
+                if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
+                    btn.style.setProperty('--mouse-x', `${x}px`);
+                    btn.style.setProperty('--mouse-y', `${y}px`);
+                }
+            }, { passive: true });
+        });
+    </script>
+
+</body>
+</html>
