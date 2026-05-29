@@ -8,6 +8,60 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght,GRAD@8..144,25..151,100..1000,-200..150&display=swap" rel="stylesheet">
     <style>
+        /* [ ... Keeping all previous styles, just adding these glow tweaks ... ] */
+        .profile-hero {
+            position: relative;
+            overflow: hidden;
+            background: var(--md-color-surface);
+            border-radius: 36px 12px 36px 36px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid rgba(255,255,255,0.03);
+            transition: all 0.5s var(--md-ease-expressive);
+        }
+
+        /* Applied the same Glow Reveal logic to the Profile Hero, owo */
+        .profile-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: inherit;
+            background: radial-gradient(circle 200px at var(--mouse-x, 0) var(--mouse-y, 0), rgba(173, 198, 255, 0.15), transparent 70%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .profile-hero:hover::before { opacity: 1; }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        </div>
+    <script>
+        // Add this to your existing script section, nyaa~!
+        const hero = document.querySelector('.profile-hero');
+        hero.addEventListener('mousemove', (e) => {
+            const rect = hero.getBoundingClientRect();
+            hero.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+            hero.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+        });
+        /* [ ... Keep the rest of your togglePlay logic ... ] */
+    </script>
+</body>
+</html
+    >
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material Expressive Profile - biskuit :3</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght,GRAD@8..144,25..151,100..1000,-200..150&display=swap" rel="stylesheet">
+    <style>
         * {
             box-sizing: border-box;
             margin: 0;
