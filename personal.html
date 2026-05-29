@@ -8,47 +8,458 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght,GRAD@8..144,25..151,100..1000,-200..150&display=swap" rel="stylesheet">
     <style>
-        /* [ ... Keeping all previous styles, just adding these glow tweaks ... ] */
-        .profile-hero {
-            position: relative;
-            overflow: hidden;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            /* Authentic M3 Expressive Deep Dark Palette Tokens, nyaa~! */
+            --md-color-bg: #0f131a;
+            --md-color-surface: #191c24;
+            --md-color-surface-bright: #222630;
+            --md-color-primary: #adc6ff;
+            --md-color-on-primary: #002e69;
+            --md-color-primary-container: #2b447a;
+            --md-color-on-surface: #e3e2e6;
+            --md-color-variant: #c4c6d0;
+            
+            /* Ultra fluid M3 Expressive elastic motion curves, uwu */
+            --md-ease-expressive: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --md-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        body {
+            font-family: 'Roboto Flex', sans-serif;
+            background-color: var(--md-color-bg);
+            color: var(--md-color-on-surface);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 18px;
+            overflow-x: hidden;
+        }
+
+        .wrapper {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            animation: expressive-entrance 0.9s var(--md-ease-standard) both;
+        }
+
+        /* Material Trailer style bouncy layout pop, owo */
+        @keyframes expressive-entrance {
+            from { opacity: 0; transform: scale(0.92) translateY(40px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* M3 Fluid Dynamic Navigation Header */
+        .app-bar {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            padding: 8px;
+        }
+
+        /* Upgraded geometric dynamic back pointer arrow, nyaa~! */
+        .back-nav-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 16px;
             background: var(--md-color-surface);
-            border-radius: 36px 12px 36px 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--md-color-primary);
+            text-decoration: none;
+            transition: all 0.4s var(--md-ease-expressive);
+        }
+
+        .back-nav-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.3s var(--md-ease-expressive);
+        }
+
+        .back-nav-btn:hover {
+            background: var(--md-color-primary);
+            color: var(--md-color-on-primary);
+            border-radius: 24px;
+            transform: scale(1.1) rotate(-8deg);
+        }
+
+        .back-nav-btn:hover svg {
+            transform: translateX(-2px);
+        }
+
+        .app-bar-title {
+            font-size: 1.5rem;
+            font-weight: 300;
+            font-stretch: 120%;
+            letter-spacing: -0.5px;
+        }
+
+        /* Asymmetric Profile Block (Iconic M3 Expressive Style, owo!) */
+        .profile-hero {
+            background: var(--md-color-surface);
+            border-radius: 36px 12px 36px 36px; /* Radical shape asymmetry! */
             padding: 28px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            border: 1px solid rgba(255,255,255,0.03);
+            text-align: center;
+            position: relative;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
             transition: all 0.5s var(--md-ease-expressive);
+            border: 1px solid rgba(255,255,255,0.03);
         }
 
-        /* Applied the same Glow Reveal logic to the Profile Hero, owo */
-        .profile-hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            border-radius: inherit;
-            background: radial-gradient(circle 200px at var(--mouse-x, 0) var(--mouse-y, 0), rgba(173, 198, 255, 0.15), transparent 70%);
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.4s ease;
+        .profile-hero:hover {
+            border-radius: 36px 36px 12px 36px;
+            transform: translateY(-4px) scale(1.02);
+            background: var(--md-color-surface-bright);
         }
-        .profile-hero:hover::before { opacity: 1; }
+
+        .avatar-frame {
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        /* Fluid morphing squircle layout frame component */
+        .profile-pic {
+            width: 110px;
+            height: 110px;
+            border-radius: 42px 20px 42px 42px;
+            object-fit: cover;
+            border: 3px solid var(--md-color-primary);
+            transition: all 0.6s var(--md-ease-expressive);
+        }
+
+        .profile-hero:hover .profile-pic {
+            border-radius: 24px 42px 24px 24px;
+            transform: scale(1.08) rotate(6deg);
+        }
+
+        /* Pulse glow state loop tracker */
+        .status-badge {
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            background: #b4ffd0;
+            color: #00391c;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 100px;
+            border: 3px solid var(--md-color-surface);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .user-name {
+            font-size: 2.2rem;
+            font-weight: 800;
+            font-stretch: 130%;
+            color: #ffffff;
+            letter-spacing: -1px;
+        }
+
+        /* Updated cutie header greeting chip, owo! */
+        .user-greeting-chip {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--md-color-on-primary-container);
+            background: rgba(173, 198, 255, 0.15);
+            padding: 6px 20px;
+            border-radius: 100px;
+            margin-top: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Premium Specification Details Hub Module */
+        .expressive-card {
+            background: var(--md-color-surface);
+            border-radius: 28px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .card-label-header {
+            font-size: 0.85rem;
+            font-weight: 900;
+            color: var(--md-color-primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .info-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Smooth slide-expanding row items based on your real data! */
+        .info-pill-row {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 14px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s var(--md-ease-expressive);
+        }
+
+        .info-pill-row:hover {
+            background: rgba(255, 255, 255, 0.07);
+            transform: translateX(6px) scale(1.01);
+        }
+
+        .info-key {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--md-color-variant);
+        }
+
+        /* Bold expressive weight text configurations */
+        .info-val {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ffffff;
+            font-stretch: 105%;
+        }
+
+        /* Material Player Component Layer */
+        .track-strip {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            border-radius: 24px;
+            background: var(--md-color-surface);
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.4s var(--md-ease-expressive);
+            margin-bottom: 8px;
+            border: 1px solid transparent;
+        }
+
+        .track-strip:hover {
+            background: var(--md-color-surface-bright);
+            transform: scale(1.01);
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .track-core {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            width: 85%;
+        }
+
+        /* M3 Style Rectangular Pill Action Toggle Node */
+        .action-toggle-trigger {
+            background: var(--md-color-surface-bright);
+            color: var(--md-color-primary);
+            border: 2px solid rgba(255,255,255,0.06);
+            padding: 8px 18px;
+            border-radius: 18px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            min-width: 86px;
+            text-align: center;
+            transition: all 0.4s var(--md-ease-expressive);
+        }
+
+        .track-meta-data {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .track-title-node {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #ffffff;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .track-author-node {
+            font-size: 0.85rem;
+            color: var(--md-color-variant);
+            margin-top: 3px;
+        }
+
+        /* Interactive Active Play States morphing runtime nodes */
+        .active-playing-strip {
+            background: var(--md-color-primary-container) !important;
+            border-radius: 12px 32px 32px 32px !important; /* Changes shape when active! */
+            box-shadow: 0 8px 24px rgba(43,68,122,0.4);
+            transform: scale(1.03);
+        }
+
+        .active-playing-strip .action-toggle-trigger {
+            background: #ffffff !important;
+            color: var(--md-color-on-primary) !important;
+            border-color: #ffffff !important;
+            border-radius: 12px;
+        }
+
+        /* Variables stretch values scaling on live active audio states, owo! */
+        .active-playing-strip .track-title-node {
+            font-weight: 950;
+            font-stretch: 140%;
+            color: var(--md-color-primary);
+        }
+
+        /* Certified Stamp Footer Badge Element */
+        .certified-footer {
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 900;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--md-color-variant);
+            opacity: 0.4;
+            padding: 12px 0;
+            font-stretch: 110%;
+        }
     </style>
 </head>
 <body>
+
     <div class="wrapper">
-        </div>
+        
+        <header class="app-bar">
+            <a href="./index.html" class="back-nav-btn" aria-label="Back">
+                <svg viewBox="0 0 24 24">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+            </a>
+            <span class="app-bar-title">biskuit.sys</span>
+        </header>
+
+        <section class="profile-hero">
+            <div class="avatar-frame">
+                <img src="avatar.png" alt="Cookie Avatar" class="profile-pic">
+                <div class="status-badge">ONLINE</div>
+            </div>
+            <h1 class="user-name">biskuit :3</h1>
+            <div class="user-greeting-chip">Haii~ :3</div>
+        </section>
+
+        <section class="expressive-card">
+            <h2 class="card-label-header">Info</h2>
+            <div class="info-stack">
+                <div class="info-pill-row">
+                    <span class="info-key">Favorite Identity</span>
+                    <span class="info-val">Sylveon</span>
+                </div>
+                <div class="info-pill-row">
+                    <span class="info-key">Fandom</span>
+                    <span class="info-val">Cat / Kitty</span>
+                </div>
+                <div class="info-pill-row">
+                    <span class="info-key">Passions</span>
+                    <span class="info-val">Love Techs stuff</span>
+                </div>
+                <div class="info-pill-row">
+                    <span class="info-key">OS Core Statement</span>
+                    <span class="info-val">I use Arch btw :3</span>
+                </div>
+                <div class="info-pill-row">
+                    <span class="info-key">Origin Node</span>
+                    <span class="info-val">Indonesian</span>
+                </div>
+            </div>
+        </section>
+
+        <main class="expressive-card">
+            <h2 class="card-label-header">Expressive Player</h2>
+
+            <audio id="audio1" src="clouds.mp3" preload="none"></audio>
+            <audio id="audio2" src="dismiss.mp3" preload="none"></audio>
+
+            <div id="row1" class="track-strip" onclick="togglePlay('audio1', 'row1')">
+                <div class="track-core">
+                    <button class="action-toggle-trigger" id="btn-audio1">Play</button>
+                    <div class="track-meta-data">
+                        <span class="track-title-node">Clouds. F 172bpm 450hz</span>
+                        <span class="track-author-node">0vvv0</span>
+                    </div>
+                </div>
+                <div class="track-right-indicator">──</div>
+            </div>
+
+            <div id="row2" class="track-strip" onclick="togglePlay('audio2', 'row2')">
+                <div class="track-core">
+                    <button class="action-toggle-trigger" id="btn-audio2">Play</button>
+                    <div class="track-meta-data">
+                        <span class="track-title-node">Dismiss. Fm 153bpm 430hz</span>
+                        <span class="track-author-node">0vvv0</span>
+                    </div>
+                </div>
+                <div class="track-right-indicator">──</div>
+            </div>
+
+        </main>
+
+        <footer class="certified-footer">
+            🛡️ Linux DistroHopper Certified 🛡️
+        </footer>
+
+    </div>
+
     <script>
-        // Add this to your existing script section, nyaa~!
-        const hero = document.querySelector('.profile-hero');
-        hero.addEventListener('mousemove', (e) => {
-            const rect = hero.getBoundingClientRect();
-            hero.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-            hero.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
-        });
-        /* [ ... Keep the rest of your togglePlay logic ... ] */
+        function togglePlay(audioId, rowId) {
+            var audio = document.getElementById(audioId);
+            var row = document.getElementById(rowId);
+            var btn = document.getElementById('btn-' + audioId);
+            
+            var allAudios = document.querySelectorAll('audio');
+            var allRows = document.querySelectorAll('.track-strip');
+            var allBtns = document.querySelectorAll('.action-toggle-trigger');
+            
+            allAudios.forEach(function(track) {
+                if(track.id !== audioId) {
+                    track.pause();
+                    track.currentTime = 0;
+                }
+            });
+            
+            allRows.forEach(function(r) {
+                if(r.id !== rowId) r.classList.remove('active-playing-strip');
+            });
+            
+            allBtns.forEach(function(b) {
+                if(b.id !== 'btn-' + audioId) b.textContent = 'Play';
+            });
+
+            if (audio.paused) {
+                audio.play();
+                row.classList.add('active-playing-strip');
+                btn.textContent = 'Pause';
+            } else {
+                audio.pause();
+                row.classList.remove('active-playing-strip');
+                btn.textContent = 'Play';
+            }
+        }
     </script>
+
 </body>
-</html
-    >
+</html>
