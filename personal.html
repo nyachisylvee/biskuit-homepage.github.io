@@ -13,10 +13,9 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #101721;
+            background: #17212b; /* Exact Nekogram dark mode workspace background, owo */
             color: #ffffff;
             min-height: 100vh;
-            padding: 16px;
             display: flex;
             justify-content: center;
         }
@@ -26,181 +25,144 @@
             max-width: 550px;
             display: flex;
             flex-direction: column;
-            gap: 16px;
         }
 
-        /* Top Bar Navigation Component */
+        /* Top Bar Component matching app layout */
         .app-bar {
             display: flex;
             align-items: center;
-            gap: 20px;
-            padding: 12px 4px;
+            gap: 24px;
+            padding: 14px 16px;
+            background: #17212b;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
         .back-arrow {
-            color: #5288c1;
+            color: #ffffff;
             text-decoration: none;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: bold;
-            transition: transform 0.2s ease;
         }
 
-        .back-arrow:hover {
-            transform: translateX(-3px);
+        .app-bar-title {
+            font-size: 1.25rem;
+            font-weight: 500;
         }
 
-        /* Profile Header Block */
-        .profile-header {
+        /* Profile Block Header Container */
+        .profile-section {
             background: #17212b;
-            border-radius: 16px;
-            padding: 24px;
+            padding: 10px 16px 20px 16px;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            text-align: center;
-            border-bottom: 1px solid #24303f;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            gap: 20px;
+            border-bottom: 4px solid #0e1621; /* Separation bar channel, nyaa~! */
         }
 
         .profile-pic {
-            width: 100px;
-            height: 100px;
+            width: 76px;
+            height: 76px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 12px;
-            border: 2px solid #5288c1;
+        }
+
+        .profile-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
         }
 
         .user-name {
-            font-size: 1.4rem;
+            font-size: 1.25rem;
             font-weight: 600;
-            margin-bottom: 2px;
         }
 
         .presence-status {
             font-size: 0.85rem;
-            color: #5288c1;
-            margin-bottom: 8px;
+            color: #5288c1; /* App-accurate blue status text, uwu */
         }
 
         .user-id-badge {
-            font-family: monospace;
             font-size: 0.8rem;
             color: #7f8c9a;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 4px 10px;
-            border-radius: 20px;
+            margin-top: 2px;
         }
 
-        /* Profile Action Buttons Drawer */
-        .action-row {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            width: 100%;
-            margin-top: 16px;
-        }
-
-        .info-toggle {
-            display: none;
-        }
-
-        .action-btn {
-            background: #202b36;
-            border: 1px solid #2b394a;
-            color: #e5edf5;
-            padding: 10px 4px;
-            border-radius: 10px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            text-align: center;
-            cursor: pointer;
+        /* Full Custom Account Info Details Section */
+        .info-section {
+            background: #17212b;
+            padding: 16px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            user-select: none;
-            transition: background 0.2s ease, transform 0.1s ease;
+            gap: 16px;
+            border-bottom: 4px solid #0e1621;
         }
 
-        .action-btn:hover {
-            background: #2b394a;
+        .info-section-title {
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: #5288c1;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .action-btn:active {
-            transform: scale(0.97);
+        .info-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
-        .btn-icon {
-            font-size: 1.1rem;
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
         }
 
-        .info-drawer {
-            width: 100%;
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, opacity 0.2s ease;
-            background: rgba(0, 0, 0, 0.15);
-            border-radius: 10px;
-            text-align: left;
-        }
-
-        .info-drawer-content {
-            padding: 12px;
+        .info-label {
             font-size: 0.9rem;
-            line-height: 1.5;
-            color: #b2c1d1;
-            border-left: 3px solid #5288c1;
+            color: #7f8c9a;
+            font-weight: 500;
         }
 
-        #toggle-info:checked ~ .info-drawer {
-            max-height: 120px;
-            opacity: 1;
-            margin-top: 12px;
+        .info-value {
+            font-size: 0.95rem;
+            color: #f5f5f5;
+            text-align: right;
+            max-width: 65%;
+            font-family: monospace;
         }
 
-        /* Playlist Container Element */
-        .playlist-card {
+        /* Playlist Interface Component */
+        .playlist-section {
             background: #17212b;
-            border-radius: 16px;
             padding: 16px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            flex-grow: 1;
         }
 
         .playlist-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 14px;
-            padding: 0 4px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: #5288c1;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
         }
 
-        .playlist-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #ffffff;
-        }
-
-        .playlist-actions {
-            font-size: 1.2rem;
-            color: #7f8c9a;
-            display: flex;
-            gap: 14px;
-        }
-
-        /* Music Track Rows Component */
+        /* Audio Track Strip Row Components */
         .track-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 10px;
-            border-radius: 12px;
-            background: transparent;
+            padding: 12px 8px;
+            border-radius: 8px;
             cursor: pointer;
             user-select: none;
-            transition: background 0.2s ease;
-            margin-bottom: 4px;
+            transition: background 0.15s ease;
+            margin-bottom: 6px;
         }
 
         .track-item:hover {
@@ -210,38 +172,38 @@
         .track-left {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 16px;
+            width: 85%;
         }
 
-        /* Circular Play Toggle Button */
-        .play-icon-container {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: #5288c1;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
+        /* Clean app styled rectangular action button node */
+        .play-action-btn {
+            background: #2b394a;
+            color: #5288c1;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.8rem;
             font-weight: bold;
-            transition: background 0.2s ease, transform 0.1s ease;
-        }
-
-        .track-item:hover .play-icon-container {
-            background: #6599d2;
-            transform: scale(1.05);
+            text-transform: uppercase;
+            min-width: 70px;
+            text-align: center;
+            letter-spacing: 0.5px;
         }
 
         .track-details {
             display: flex;
             flex-direction: column;
+            overflow: hidden;
+            white-space: nowrap;
         }
 
         .track-name {
             font-size: 0.95rem;
             font-weight: 500;
             color: #ffffff;
+            text-overflow: ellipsis;
+            overflow: hidden;
         }
 
         .track-artist {
@@ -251,19 +213,18 @@
         }
 
         .track-right-drag {
-            font-size: 1.1rem;
-            color: #384656;
-            letter-spacing: -1px;
+            font-size: 1.2rem;
+            color: #2b394a;
         }
 
-        /* Active styling when track is toggled playing */
+        /* Interactive Active Audio Row Glow Tints */
         .playing-row {
-            background: rgba(82, 136, 193, 0.15) !important;
+            background: rgba(82, 136, 193, 0.08) !important;
         }
         
-        .playing-row .play-icon-container {
-            background: #e5edf5 !important;
-            color: #17212b !important;
+        .playing-row .play-action-btn {
+            background: #5288c1 !important;
+            color: #ffffff !important;
         }
     </style>
 </head>
@@ -273,117 +234,38 @@
         
         <header class="app-bar">
             <a href="./index.html" class="back-arrow">←</a>
-            <span style="font-size: 1.1rem; font-weight: 600;">Profile</span>
+            <span class="app-bar-title">Nekogram Profile</span>
         </header>
 
-        <section class="profile-header">
+        <section class="profile-section">
             <img src="avatar.png" alt="Profile Picture" class="profile-pic">
-            <h1 class="user-name">biskuit :3</h1>
-            <div class="presence-status">online</div>
-            <div class="user-id-badge">ID: 8268853919, DC: 5</div>
-
-            <div class="action-row">
-                <div class="action-btn">
-                    <span class="btn-icon">📷</span>
-                    <span>Set Photo</span>
-                </div>
-                
-                <label for="toggle-info" class="action-btn">
-                    <span class="btn-icon">✏️</span>
-                    <span>Edit Info</span>
-                </label>
-                
-                <div class="action-btn">
-                    <span class="btn-icon">⚙️</span>
-                    <span>Settings</span>
-                </div>
+            <div class="profile-meta">
+                <h1 class="user-name">biskuit :3</h1>
+                <div class="presence-status">online</div>
+                <div class="user-id-badge">ID: 8268853919, DC: 5</div>
             </div>
+        </section>
 
-            <input type="checkbox" id="toggle-info" class="info-toggle">
-            
-            <div class="info-drawer">
-                <div class="info-drawer-content">
-                    <strong>Bio:</strong> Tech explorer, hardware reverse-engineering enthusiast, and competitive tactical gaming fan. Currently configuring layout nodes and optimizing systems!
+        <section class="info-section">
+            <h2 class="info-section-title">Info</h2>
+            <div class="info-grid">
+                <div class="info-row">
+                    <span class="info-label">Gaming Profile</span>
+                    <span class="info-value">Tactical Shooties & Space Sim</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Environments</span>
+                    <span class="info-value">Win10 LTSC IoT / Linux Core</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Creative Engine</span>
+                    <span class="info-value">Alight Motion / Legacy 3D</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Projects Node</span>
+                    <span class="info-value">Fictional OS UI Blueprint</span>
                 </div>
             </div>
         </section>
 
-        <main class="playlist-card">
-            <div class="playlist-header">
-                <h2 class="playlist-title">Your Playlist</h2>
-                <div class="playlist-actions">
-                    <span>➕</span>
-                    <span>🔍</span>
-                </div>
-            </div>
-
-            <audio id="audio1" src="clouds.mp4" preload="none"></audio>
-            <audio id="audio2" src="dismiss.mp4" preload="none"></audio>
-
-            <div id="row1" class="track-item" onclick="togglePlay('audio1', 'row1')">
-                <div class="track-left">
-                    <div class="play-icon-container" id="icon-audio1">▶</div>
-                    <div class="track-details">
-                        <span class="track-name">Clouds. F 172bpm 450hz</span>
-                        <span class="track-artist">0vvv0</span>
-                    </div>
-                </div>
-                <div class="track-right-drag">＝</div>
-            </div>
-
-            <div id="row2" class="track-item" onclick="togglePlay('audio2', 'row2')">
-                <div class="track-left">
-                    <div class="play-icon-container" id="icon-audio2">▶</div>
-                    <div class="track-details">
-                        <span class="track-name">Dismiss. Fm 153bpm 430hz</span>
-                        <span class="track-artist">0vvv0</span>
-                    </div>
-                </div>
-                <div class="track-right-drag">＝</div>
-            </div>
-
-        </main>
-
-    </div>
-
-    <script>
-        function togglePlay(audioId, rowId) {
-            var audio = document.getElementById(audioId);
-            var row = document.getElementById(rowId);
-            var icon = document.getElementById('icon-' + audioId);
-            
-            // Stop any other track that might be playing first, owo!
-            var allAudios = document.querySelectorAll('audio');
-            var allRows = document.querySelectorAll('.track-item');
-            var allIcons = document.querySelectorAll('.play-icon-container');
-            
-            allAudios.forEach(function(track) {
-                if(track.id !== audioId) {
-                    track.pause();
-                    track.currentTime = 0;
-                }
-            });
-            
-            allRows.forEach(function(r) {
-                if(r.id !== rowId) r.classList.remove('playing-row');
-            });
-            
-            allIcons.forEach(function(i) {
-                if(i.id !== 'icon-' + audioId) i.textContent = '▶';
-            });
-
-            // Toggle our current targeted track, nyaa~!
-            if (audio.paused) {
-                audio.play();
-                row.classList.add('playing-row');
-                icon.textContent = '⏸'; // Switch to elegant pause symbol!
-            } else {
-                audio.pause();
-                row.classList.remove('playing-row');
-                icon.textContent = '▶';
-            }
-        }
-    </script>
-
-</body>
-</html>
+        <main class="playlist
