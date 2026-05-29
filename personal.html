@@ -16,18 +16,25 @@
         body { font-family: 'Roboto Flex', sans-serif; background-color: var(--md-color-bg); color: var(--md-color-on-surface); min-height: 100vh; display: flex; justify-content: center; padding: 18px; }
         .wrapper { width: 100%; max-width: 480px; display: flex; flex-direction: column; gap: 20px; }
         
-        /* The Hero Card with the Glow Reveal Logic, owo */
-        .profile-hero { position: relative; overflow: hidden; background: var(--md-color-surface); border-radius: 36px 12px 36px 36px; padding: 28px; display: flex; flex-direction: column; align-items: center; text-align: center; border: 1px solid rgba(255,255,255,0.03); transition: 0.5s; }
-        .profile-hero::before { content: ''; position: absolute; top:0; left:0; right:0; bottom:0; border-radius: inherit; background: radial-gradient(circle 200px at var(--mouse-x, 0) var(--mouse-y, 0), rgba(173, 198, 255, 0.15), transparent 70%); pointer-events: none; opacity: 0; transition: opacity 0.4s ease; }
+        /* The Glow Reveal Hero Card, owo! */
+        .profile-hero { 
+            position: relative; overflow: hidden; background: var(--md-color-surface); border-radius: 36px 12px 36px 36px; padding: 28px; 
+            display: flex; flex-direction: column; align-items: center; text-align: center; border: 1px solid rgba(255,255,255,0.03); transition: 0.5s; 
+        }
+        .profile-hero::before { 
+            content: ''; position: absolute; top:0; left:0; right:0; bottom:0; border-radius: inherit; 
+            background: radial-gradient(circle 200px at var(--mouse-x, 0) var(--mouse-y, 0), rgba(173, 198, 255, 0.15), transparent 70%); 
+            pointer-events: none; opacity: 0; transition: opacity 0.4s ease; 
+        }
         .profile-hero:hover::before { opacity: 1; }
 
-        /* The FULL Expressive Player Styles, nyaa~! */
-        .expressive-card { background: var(--md-color-surface); border-radius: 28px; padding: 24px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+        /* Restoring all your original layout styles, nyaa~! */
+        .expressive-card { background: var(--md-color-surface); border-radius: 28px; padding: 24px; display: flex; flex-direction: column; gap: 16px; }
         .card-label-header { font-size: 0.85rem; font-weight: 900; color: var(--md-color-primary); text-transform: uppercase; letter-spacing: 2px; }
         .track-strip { display: flex; align-items: center; justify-content: space-between; padding: 16px; border-radius: 24px; background: var(--md-color-surface); cursor: pointer; transition: 0.4s; border: 1px solid transparent; }
         .track-strip:hover { background: var(--md-color-surface-bright); transform: scale(1.01); }
         .active-playing-strip { background: var(--md-color-primary-container) !important; border-radius: 12px 32px 32px 32px !important; transform: scale(1.03); }
-        .action-toggle-trigger { background: var(--md-color-surface-bright); color: var(--md-color-primary); border-radius: 18px; padding: 8px 18px; font-weight: 800; }
+        .action-toggle-trigger { background: var(--md-color-surface-bright); color: var(--md-color-primary); border-radius: 18px; padding: 8px 18px; font-weight: 800; cursor: pointer; }
         .active-playing-strip .action-toggle-trigger { background: #ffffff !important; color: var(--md-color-on-primary) !important; }
         .track-title-node { font-size: 1.05rem; font-weight: 500; color: #ffffff; }
     </style>
@@ -45,22 +52,31 @@
             <div style="background:rgba(173,198,255,0.15); padding:6px 20px; border-radius:100px; margin-top:8px;">Haii~ :3</div>
         </section>
 
+        <section class="expressive-card">
+            <h2 class="card-label-header">Info</h2>
+            <div style="display:flex; flex-direction:column; gap:12px;">
+                <div style="background:rgba(255,255,255,0.03); padding:14px; border-radius:16px;">Sylveon (fav)</div>
+                <div style="background:rgba(255,255,255,0.03); padding:14px; border-radius:16px;">Furry</div>
+                <div style="background:rgba(255,255,255,0.03); padding:14px; border-radius:16px;">Love Techs stuff</div>
+                <div style="background:rgba(255,255,255,0.03); padding:14px; border-radius:16px;">I use Arch btw :3</div>
+                <div style="background:rgba(255,255,255,0.03); padding:14px; border-radius:16px;">Indonesian</div>
+            </div>
+        </section>
+
         <main class="expressive-card">
             <h2 class="card-label-header">Expressive Player</h2>
             <audio id="audio1" src="clouds.mp3"></audio>
             <audio id="audio2" src="dismiss.mp3"></audio>
-
             <div id="row1" class="track-strip" onclick="togglePlay('audio1', 'row1')">
                 <div style="display:flex; align-items:center; gap:18px;">
                     <button class="action-toggle-trigger" id="btn-audio1">Play</button>
-                    <div class="track-meta-data"><span class="track-title-node">Clouds. F 172bpm 450hz</span><div style="font-size:0.85rem; color:var(--md-color-variant);">0vvv0</div></div>
+                    <div><span class="track-title-node">Clouds. F 172bpm 450hz</span></div>
                 </div>
             </div>
-
             <div id="row2" class="track-strip" onclick="togglePlay('audio2', 'row2')">
                 <div style="display:flex; align-items:center; gap:18px;">
                     <button class="action-toggle-trigger" id="btn-audio2">Play</button>
-                    <div class="track-meta-data"><span class="track-title-node">Dismiss. Fm 153bpm 430hz</span><div style="font-size:0.85rem; color:var(--md-color-variant);">0vvv0</div></div>
+                    <div><span class="track-title-node">Dismiss. Fm 153bpm 430hz</span></div>
                 </div>
             </div>
         </main>
@@ -86,5 +102,5 @@
         }
     </script>
 </body>
-
-</html>
+<
+    /html>
